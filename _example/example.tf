@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 module "event-rule" {
-  source = "./../"
+  source = "git::https://github.com/clouddrove/terraform-aws-cloudwatch-event-rule.git?ref=tags/0.12.0"
 
   name        = "event-rule"
   application = "clouddrove"
