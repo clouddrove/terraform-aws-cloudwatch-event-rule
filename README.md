@@ -40,7 +40,7 @@
 <hr>
 
 
-We eat, drink, sleep and most importantly love **DevOps**. We are working towards stratergies for standardizing architecture while ensuring security for the infrastructure. We are strong believer of the philosophy <b>Bigger problems are always solved by breaking them into smaller manageable problems</b>. Resonating with microservices architecture, it is considered best-practice to run database, cluster, storage in smaller <b>connected yet manageable pieces</b> within the infrastructure.
+We eat, drink, sleep and most importantly love **DevOps**. We are working towards strategies for standardizing architecture while ensuring security for the infrastructure. We are strong believer of the philosophy <b>Bigger problems are always solved by breaking them into smaller manageable problems</b>. Resonating with microservices architecture, it is considered best-practice to run database, cluster, storage in smaller <b>connected yet manageable pieces</b> within the infrastructure.
 
 This module is basically combination of [Terraform open source](https://www.terraform.io/) and includes automatation tests and examples. It also helps to create and improve your infrastructure with minimalistic code instead of maintaining the whole infrastructure code yourself.
 
@@ -95,20 +95,21 @@ Here is an example of how you can use this module in your inventory structure:
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| application | Application (e.g. `cd` or `clouddrove`). | string | `` | no |
-| arn | The Amazon Resource Name (ARN) associated with the role that is used for target invocation. | string | `` | no |
-| description | The description for the rule. | string | `` | no |
-| enabled | Enable event. | bool | `true` | no |
-| environment | Environment (e.g. `prod`, `dev`, `staging`). | string | `` | no |
-| event_pattern | (schedule_expression isn't specified) Event pattern described a JSON object. See full documentation of CloudWatch Events and Event Patterns for details. | string | `` | no |
-| input_path | The value of the JSONPath that is used for extracting part of the matched event when passing it to the target. | string | `` | no |
-| is_enabled | Whether the rule should be enabled (defaults to true). | bool | `true` | no |
-| label_order | Label order, e.g. `name`,`application`. | list | `<list>` | no |
-| name | Name  (e.g. `app` or `cluster`). | string | `` | no |
-| role_arn | The Amazon Resource Name (ARN) associated with the role that is used for target invocation. | string | `` | no |
-| schedule_expression | (if event_pattern isn't specified) The scheduling expression. For example, cron(0 20 * * ? *) or rate(5 minutes). | string | `` | no |
-| target_id | The Amazon Resource Name (ARN) associated with the role that is used for target invocation. | string | `` | no |
-| target_role_arn | The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. Required if ecs_target is used. | string | `` | no |
+| application | Application \(e.g. `cd` or `clouddrove`\). | string | `""` | no |
+| arn | The Amazon Resource Name \(ARN\) associated with the role that is used for target invocation. | string | `""` | no |
+| description | The description for the rule. | string | `""` | no |
+| enabled | Enable event. | bool | `"true"` | no |
+| environment | Environment \(e.g. `prod`, `dev`, `staging`\). | string | `""` | no |
+| event\_pattern | \(schedule\_expression isn't specified\) Event pattern described a JSON object. See full documentation of CloudWatch Events and Event Patterns for details. | string | `""` | no |
+| input\_path | The value of the JSONPath that is used for extracting part of the matched event when passing it to the target. | string | `""` | no |
+| is\_enabled | Whether the rule should be enabled \(defaults to true\). | bool | `"true"` | no |
+| label\_order | Label order, e.g. `name`,`application`. | list | `<list>` | no |
+| managedby | ManagedBy, eg 'CloudDrove' or 'AnmolNagpal'. | string | `"anmol@clouddrove.com"` | no |
+| name | Name  \(e.g. `app` or `cluster`\). | string | `""` | no |
+| role\_arn | The Amazon Resource Name \(ARN\) associated with the role that is used for target invocation. | string | `""` | no |
+| schedule\_expression | \(if event\_pattern isn't specified\) The scheduling expression. For example, cron\(0 20 \* \* ? \*\) or rate\(5 minutes\). | string | `""` | no |
+| target\_id | The Amazon Resource Name \(ARN\) associated with the role that is used for target invocation. | string | `""` | no |
+| target\_role\_arn | The Amazon Resource Name \(ARN\) of the IAM role to be used for this target when the rule is triggered. Required if ecs\_target is used. | string | `""` | no |
 
 ## Outputs
 

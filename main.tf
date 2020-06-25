@@ -9,10 +9,12 @@
 module "labels" {
   source = "git::https://github.com/clouddrove/terraform-labels.git"
 
+  enabled     = var.enabled
   name        = var.name
   application = var.application
   environment = var.environment
   label_order = var.label_order
+  managedby   = var.managedby
 }
 
 #Module      : CLOUDWATCH EVENT
