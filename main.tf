@@ -7,7 +7,7 @@
 #              for resources. You can use terraform-labels to implement a strict naming
 #              convention.
 module "labels" {
-  source = "git::https://github.com/clouddrove/terraform-labels.git"
+  source = "git::https://github.com/clouddrove/terraform-labels.git?ref=tags/0.13.0"
 
   enabled     = var.enabled
   name        = var.name
@@ -41,3 +41,4 @@ resource "aws_cloudwatch_event_target" "default" {
   input_path = var.input_path
   role_arn   = var.target_role_arn
 }
+
