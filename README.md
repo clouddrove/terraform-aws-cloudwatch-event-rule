@@ -9,14 +9,14 @@
 
 </h1>
 
-<p align="center" style="font-size: 1.2rem;">
+<p align="center" style="font-size: 1.2rem;"> 
     Terraform module to create cloudwatch event rule on AWS.
      </p>
 
 <p align="center">
 
 <a href="https://www.terraform.io">
-  <img src="https://img.shields.io/badge/Terraform-v0.12-green" alt="Terraform">
+  <img src="https://img.shields.io/badge/terraform-v0.13-green" alt="Terraform">
 </a>
 <a href="LICENSE.md">
   <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="Licence">
@@ -40,7 +40,7 @@
 <hr>
 
 
-We eat, drink, sleep and most importantly love **DevOps**. We are working towards strategies for standardizing architecture while ensuring security for the infrastructure. We are strong believer of the philosophy <b>Bigger problems are always solved by breaking them into smaller manageable problems</b>. Resonating with microservices architecture, it is considered best-practice to run database, cluster, storage in smaller <b>connected yet manageable pieces</b> within the infrastructure.
+We eat, drink, sleep and most importantly love **DevOps**. We are working towards strategies for standardizing architecture while ensuring security for the infrastructure. We are strong believer of the philosophy <b>Bigger problems are always solved by breaking them into smaller manageable problems</b>. Resonating with microservices architecture, it is considered best-practice to run database, cluster, storage in smaller <b>connected yet manageable pieces</b> within the infrastructure. 
 
 This module is basically combination of [Terraform open source](https://www.terraform.io/) and includes automatation tests and examples. It also helps to create and improve your infrastructure with minimalistic code instead of maintaining the whole infrastructure code yourself.
 
@@ -51,9 +51,9 @@ We have [*fifty plus terraform modules*][terraform_modules]. A few of them are c
 
 ## Prerequisites
 
-This module has a few dependencies:
+This module has a few dependencies: 
 
-- [Terraform 0.12](https://learn.hashicorp.com/terraform/getting-started/install.html)
+- [Terraform 0.13](https://learn.hashicorp.com/terraform/getting-started/install.html)
 - [Go](https://golang.org/doc/install)
 - [github.com/stretchr/testify/assert](https://github.com/stretchr/testify)
 - [github.com/gruntwork-io/terratest/modules/terraform](https://github.com/gruntwork-io/terratest)
@@ -74,7 +74,8 @@ This module has a few dependencies:
 Here is an example of how you can use this module in your inventory structure:
 ```hcl
     module "event-rule" {
-      source              = "git::https://github.com/clouddrove/terraform-aws-cloudwatch-event-rule.git?ref=tags/0.12.1"
+      source              = "clouddrove/cloudwatch-event-rule/aws"
+      version             = "0.13.0"
       name                = "event-rule"
       application         = "clouddrove"
       environment         = "test"
@@ -94,22 +95,22 @@ Here is an example of how you can use this module in your inventory structure:
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-----:|:-----:|
-| application | Application \(e.g. `cd` or `clouddrove`\). | string | `""` | no |
-| arn | The Amazon Resource Name \(ARN\) associated with the role that is used for target invocation. | string | `""` | no |
-| description | The description for the rule. | string | `""` | no |
-| enabled | Enable event. | bool | `"true"` | no |
-| environment | Environment \(e.g. `prod`, `dev`, `staging`\). | string | `""` | no |
-| event\_pattern | \(schedule\_expression isn't specified\) Event pattern described a JSON object. See full documentation of CloudWatch Events and Event Patterns for details. | string | `""` | no |
-| input\_path | The value of the JSONPath that is used for extracting part of the matched event when passing it to the target. | string | `""` | no |
-| is\_enabled | Whether the rule should be enabled \(defaults to true\). | bool | `"true"` | no |
-| label\_order | Label order, e.g. `name`,`application`. | list | `<list>` | no |
-| managedby | ManagedBy, eg 'CloudDrove' or 'AnmolNagpal'. | string | `"anmol@clouddrove.com"` | no |
-| name | Name  \(e.g. `app` or `cluster`\). | string | `""` | no |
-| role\_arn | The Amazon Resource Name \(ARN\) associated with the role that is used for target invocation. | string | `""` | no |
-| schedule\_expression | \(if event\_pattern isn't specified\) The scheduling expression. For example, cron\(0 20 \* \* ? \*\) or rate\(5 minutes\). | string | `""` | no |
-| target\_id | The Amazon Resource Name \(ARN\) associated with the role that is used for target invocation. | string | `""` | no |
-| target\_role\_arn | The Amazon Resource Name \(ARN\) of the IAM role to be used for this target when the rule is triggered. Required if ecs\_target is used. | string | `""` | no |
+|------|-------------|------|---------|:--------:|
+| application | Application (e.g. `cd` or `clouddrove`). | `string` | `""` | no |
+| arn | The Amazon Resource Name (ARN) associated with the role that is used for target invocation. | `string` | `""` | no |
+| description | The description for the rule. | `string` | `""` | no |
+| enabled | Enable event. | `bool` | `true` | no |
+| environment | Environment (e.g. `prod`, `dev`, `staging`). | `string` | `""` | no |
+| event\_pattern | (schedule\_expression isn't specified) Event pattern described a JSON object. See full documentation of CloudWatch Events and Event Patterns for details. | `any` | `null` | no |
+| input\_path | The value of the JSONPath that is used for extracting part of the matched event when passing it to the target. | `string` | `""` | no |
+| is\_enabled | Whether the rule should be enabled (defaults to true). | `bool` | `true` | no |
+| label\_order | Label order, e.g. `name`,`application`. | `list` | `[]` | no |
+| managedby | ManagedBy, eg 'CloudDrove' or 'AnmolNagpal'. | `string` | `"anmol@clouddrove.com"` | no |
+| name | Name  (e.g. `app` or `cluster`). | `string` | `""` | no |
+| role\_arn | The Amazon Resource Name (ARN) associated with the role that is used for target invocation. | `string` | `""` | no |
+| schedule\_expression | (if event\_pattern isn't specified) The scheduling expression. For example, cron(0 20 \* \* ? \*) or rate(5 minutes). | `any` | `null` | no |
+| target\_id | The Amazon Resource Name (ARN) associated with the role that is used for target invocation. | `string` | `""` | no |
+| target\_role\_arn | The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. Required if ecs\_target is used. | `string` | `""` | no |
 
 ## Outputs
 
@@ -123,7 +124,7 @@ Here is an example of how you can use this module in your inventory structure:
 
 
 ## Testing
-In this module testing is performed with [terratest](https://github.com/gruntwork-io/terratest) and it creates a small piece of infrastructure, matches the output like ARN, ID and Tags name etc and destroy infrastructure in your AWS account. This testing is written in GO, so you need a [GO environment](https://golang.org/doc/install) in your system.
+In this module testing is performed with [terratest](https://github.com/gruntwork-io/terratest) and it creates a small piece of infrastructure, matches the output like ARN, ID and Tags name etc and destroy infrastructure in your AWS account. This testing is written in GO, so you need a [GO environment](https://golang.org/doc/install) in your system. 
 
 You need to run the following command in the testing folder:
 ```hcl
@@ -132,7 +133,7 @@ You need to run the following command in the testing folder:
 
 
 
-## Feedback
+## Feedback 
 If you come accross a bug or have any feedback, please log it in our [issue tracker](https://github.com/clouddrove/terraform-aws-cloudwatch-event-rule/issues), or feel free to drop us an email at [hello@clouddrove.com](mailto:hello@clouddrove.com).
 
 If you have found it worth your time, go ahead and give us a ★ on [our GitHub](https://github.com/clouddrove/terraform-aws-cloudwatch-event-rule)!
