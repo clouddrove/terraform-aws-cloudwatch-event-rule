@@ -16,7 +16,7 @@
 <p align="center">
 
 <a href="https://www.terraform.io">
-  <img src="https://img.shields.io/badge/terraform-v0.13-green" alt="Terraform">
+  <img src="https://img.shields.io/badge/terraform-v0.15-green" alt="Terraform">
 </a>
 <a href="LICENSE.md">
   <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="Licence">
@@ -75,11 +75,10 @@ Here is an example of how you can use this module in your inventory structure:
 ```hcl
     module "event-rule" {
       source              = "clouddrove/cloudwatch-event-rule/aws"
-      version             = "0.13.0"
+      version             = "0.15.0"
       name                = "event-rule"
-      application         = "clouddrove"
       environment         = "test"
-      label_order         = ["environment", "name", "application"]
+      label_order         = ["environment", "name"]
       description         = "Event Rule."
       schedule_expression = "cron(0/5 * * * ? *)"
       target_id           = "test"
@@ -96,7 +95,6 @@ Here is an example of how you can use this module in your inventory structure:
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| application | Application (e.g. `cd` or `clouddrove`). | `string` | `""` | no |
 | arn | The Amazon Resource Name (ARN) associated with the role that is used for target invocation. | `string` | `""` | no |
 | description | The description for the rule. | `string` | `""` | no |
 | enabled | Enable event. | `bool` | `true` | no |
@@ -104,9 +102,10 @@ Here is an example of how you can use this module in your inventory structure:
 | event\_pattern | (schedule\_expression isn't specified) Event pattern described a JSON object. See full documentation of CloudWatch Events and Event Patterns for details. | `any` | `null` | no |
 | input\_path | The value of the JSONPath that is used for extracting part of the matched event when passing it to the target. | `string` | `""` | no |
 | is\_enabled | Whether the rule should be enabled (defaults to true). | `bool` | `true` | no |
-| label\_order | Label order, e.g. `name`,`application`. | `list` | `[]` | no |
+| label\_order | Label order, e.g. `name`,`application`. | `list(any)` | `[]` | no |
 | managedby | ManagedBy, eg 'CloudDrove' or 'AnmolNagpal'. | `string` | `"anmol@clouddrove.com"` | no |
 | name | Name  (e.g. `app` or `cluster`). | `string` | `""` | no |
+| repository | Terraform current module repo | `string` | `"https://github.com/clouddrove/terraform-aws-cloudwatch-event-rule"` | no |
 | role\_arn | The Amazon Resource Name (ARN) associated with the role that is used for target invocation. | `string` | `""` | no |
 | schedule\_expression | (if event\_pattern isn't specified) The scheduling expression. For example, cron(0 20 \* \* ? \*) or rate(5 minutes). | `any` | `null` | no |
 | target\_id | The Amazon Resource Name (ARN) associated with the role that is used for target invocation. | `string` | `""` | no |
