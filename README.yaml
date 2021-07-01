@@ -16,7 +16,7 @@ github_repo: clouddrove/terraform-aws-cloudwatch-event-rule
 # Badges to display
 badges:
   - name: "Terraform"
-    image: "https://img.shields.io/badge/terraform-v0.13-green"
+    image: "https://img.shields.io/badge/terraform-v0.15-green"
     url: "https://www.terraform.io"
   - name: "Licence"
     image: "https://img.shields.io/badge/License-MIT-blue.svg"
@@ -37,11 +37,10 @@ usage : |-
   ```hcl
       module "event-rule" {
         source              = "clouddrove/cloudwatch-event-rule/aws"
-        version             = "0.13.0"
+        version             = "0.15.0"
         name                = "event-rule"
-        application         = "clouddrove"
         environment         = "test"
-        label_order         = ["environment", "name", "application"]
+        label_order         = ["environment", "name"]
         description         = "Event Rule."
         schedule_expression = "cron(0/5 * * * ? *)"
         target_id           = "test"
