@@ -8,9 +8,8 @@ module "event-rule" {
   source = "./../"
 
   name        = "event-rule"
-  application = "clouddrove"
   environment = "test"
-  label_order = ["environment", "name", "application"]
+  label_order = ["environment", "name"]
 
   description         = "Event Rule."
   schedule_expression = "cron(0/5 * * * ? *)"
