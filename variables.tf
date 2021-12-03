@@ -96,3 +96,16 @@ variable "target_role_arn" {
   default     = ""
   description = "The Amazon Resource Name (ARN) of the IAM role to be used for this target when the rule is triggered. Required if ecs_target is used."
 }
+
+variable "input_paths" {
+  type        = map(any)
+  default     = {}
+  description = "Key value pairs specified in the form of JSONPath (for example, time = $.time)"
+
+}
+
+variable "input_template" {
+  type        = string
+  default     = ""
+  description = "Template to customize data sent to the target. Must be valid JSON. To send a string value, the string value must include double quotes. Values must be escaped for both JSON and Terraform,"
+}

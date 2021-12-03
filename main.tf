@@ -38,7 +38,15 @@ resource "aws_cloudwatch_event_target" "default" {
   rule       = aws_cloudwatch_event_rule.default.*.name[0]
   target_id  = var.target_id
   arn        = var.arn
-  input_path = var.input_path
+  input_path = var.input_path != "" ? var.input_path : null
   role_arn   = var.target_role_arn
+
+  input_transformer {
+
+    input_paths    = var.input_path == "" ? var.input_paths : null
+    input_template = var.input_path == "" ? var.input_template : null
+  }
+
+
 }
 
