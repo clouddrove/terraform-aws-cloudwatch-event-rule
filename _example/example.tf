@@ -14,7 +14,12 @@ module "event-rule" {
   description         = "Event Rule."
   schedule_expression = "cron(0/5 * * * ? *)"
 
-  target_id = "test"
-  arn       = "arn:aws:lambda:eu-west-1:924144197303:function:hello_world_lambda"
+  target_id      = "test"
+  arn            = "arn:aws:lambda:eu-west-1:924144197303:function:hello_world_lambda"
+  input_template = "\"<instance> is in state <status>\""
+  input_paths = {
+    instance = "$.detail.instance",
+    status   = "$.detail.status",
+  }
 
 }
