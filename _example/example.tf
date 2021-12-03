@@ -2,7 +2,7 @@ provider "aws" {
   region = "eu-west-1"
 }
 
-
+data "aws_caller_identity" "current" {}
 
 module "event-rule" {
   source = "./../"
@@ -15,7 +15,7 @@ module "event-rule" {
   schedule_expression = "cron(0/5 * * * ? *)"
 
   target_id      = "test"
-  arn            = "arn:aws:lambda:eu-west-1:924144197303:function:hello_world_lambda"
+  arn            = data.aws_caller_identity.current.account_id
   input_template = "\"<instance> is in state <status>\""
   input_paths = {
     instance = "$.detail.instance",
