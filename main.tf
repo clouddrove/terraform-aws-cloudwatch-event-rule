@@ -15,6 +15,7 @@ module "labels" {
   environment = var.environment
   label_order = var.label_order
   managedby   = var.managedby
+  repository  = var.repository
 }
 
 #Module      : CLOUDWATCH EVENT
